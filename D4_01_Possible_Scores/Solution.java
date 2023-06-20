@@ -27,17 +27,10 @@
 /////////////////////////////////////////////////////////////////////////////////////////////
 import java.util.Scanner;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /*
    사용하는 클래스명이 Solution 이어야 하므로, 가급적 Solution.java 를 사용할 것을 권장합니다.
-   이러한 상황에서도 동일하게
-    java Solution 명령으로 프로그램을 수행해볼 수 있습니다.
+   이러한 상황에서도 동일하게 java Solution 명령으로 프로그램을 수행해볼 수 있습니다.
  */
 class Solution
 {
@@ -56,56 +49,21 @@ class Solution
 		   표준입력 System.in 으로부터 스캐너를 만들어 데이터를 읽어옵니다.
 		 */
         Scanner sc = new Scanner(System.in);
-        int TC;
-        TC = sc.nextInt();
+        int T;
+        T=sc.nextInt();
 		/*
 		   여러 개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 		*/
 
-        for(int testCase = 1; testCase <= TC; testCase++)
+        for(int test_case = 1; test_case <= T; test_case++)
         {
-            int numTasks = sc.nextInt();
-            int latestDueDate, residual, idx, potentialX = 0;
 
-            int[] task = new int[2];
+            /////////////////////////////////////////////////////////////////////////////////////////////
+			/*
+				 이 부분에 여러분의 알고리즘 구현이 들어갑니다.
+			 */
+            /////////////////////////////////////////////////////////////////////////////////////////////
 
-            int[][] TDs = new int[numTasks][2];
-
-            for(int i = 0; i < numTasks; i++){
-                TDs[i][0] = sc.nextInt();
-                TDs[i][1] = sc.nextInt();
-            }
-
-            Arrays.sort(TDs, Comparator.comparingInt(pair -> pair[1] * -1));
-            // System.out.println(Arrays.deepToString(TDs));
-            Queue<int[]> queue = new LinkedList<>();
-            for(int i = 0; i < numTasks; i++){
-                queue.offer(TDs[i]);
-            }
-
-            int X = queue.peek()[1];
-
-
-            while (!queue.isEmpty()) {
-
-                task = queue.poll();
-                latestDueDate = task[1];
-
-
-                if (latestDueDate > X){
-                    residual = latestDueDate - X;
-                } else{
-                    residual = 0;
-                }
-
-                // idx = D.indexOf(latestDueDate);
-                potentialX = latestDueDate - task[0] - residual;
-                if (potentialX < X) {
-                    X = potentialX;
-                }
-
-            }
-            System.out.printf("#%d %d\n" , testCase, X);
         }
     }
 }
